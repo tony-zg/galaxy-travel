@@ -6,42 +6,51 @@ import { db } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
 const Form = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [inputs, setInputs] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [loader, setLoader] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const { name, email, subject, message } = inputs;
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setLoader(true);
     !name || !email || !subject || !message
       ? toast.warn('Please provid value in each input field')
       : (async () => {
           try {
-            const docRef = await addDoc(collection(db, 'users'), {
-              name: name,
-              email: email,
-              subject: subject,
-              message: message
+            const docRef = await addDoc(collection(db, 'contacts'), {
+              inputs
             });
-            // console.log('Document written with ID: ', docRef.id);
+
             toast.success(
               `Message id ${docRef.id} has been submitted successfully`
             );
           } catch (error) {
-            // console.error('Error adding document: ', e);
             toast.error('Please provid value in each input field');
           }
         })();
-    setName('');
-    setEmail('');
-    setSubject('');
-    setMessage('');
+    setTimeout(() => {
+      setInputs({ name: '', email: '', subject: '', message: '' });
+      setLoader(false);
+    }, 2000);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({ ...inputs, [name]: value });
   };
 
   return (
     <div className="form">
       <ToastContainer
         position="bottom-center"
+        autoClose="1000"
+        hideProgressBar="true"
         toastStyle={{ backgroundColor: 'rgba(26, 26, 26, 1)' }}
         theme="theme"
       />
@@ -53,7 +62,7 @@ const Form = () => {
           type="text"
           placeholder="Please enter"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleChange}
         />
         <label name="email">Email</label>
         <input
@@ -61,7 +70,7 @@ const Form = () => {
           type="email"
           placeholder="Please enter"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleChange}
         />
         <label>Subject</label>
         <input
@@ -69,7 +78,7 @@ const Form = () => {
           type="text"
           placeholder="Please enter"
           value={subject}
-          onChange={(e) => setSubject(e.target.value)}
+          onChange={handleChange}
         />
         <label>Message</label>
         <textarea
@@ -77,9 +86,18 @@ const Form = () => {
           rows="6"
           placeholder="Leave a message here"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={handleChange}
         />
-        <button type="submit" className="btn" value="submit">
+        <button
+          type="submit"
+          className="btn"
+          value="submit"
+          style={{
+            background: loader ? '#ccc' : '',
+            cursor: loader ? 'not-allowed' : 'pointer'
+          }}
+          disabled={loader}
+        >
           Submit
         </button>
       </form>
