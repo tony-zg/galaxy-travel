@@ -24,6 +24,7 @@ textarea {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.1);
   color: #f4f4f4;
+  outline: none;
 }
 
 .btn {

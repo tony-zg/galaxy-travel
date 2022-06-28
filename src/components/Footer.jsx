@@ -29,7 +29,7 @@ const Footer = () => {
                 size={20}
                 style={{ color: '#fff', marginRight: '2rem' }}
               />
-              13 14 16
+              <a href="tel://123456">13 14 16</a>
             </h4>
           </div>
           <div className="email">
