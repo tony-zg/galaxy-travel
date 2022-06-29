@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './styles/FormStyles.css';
+import './form.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
 const Form = () => {

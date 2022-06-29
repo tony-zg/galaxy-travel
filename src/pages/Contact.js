@@ -1,7 +1,7 @@
-import Footer from '../components/Footer';
-import Form from '../components/Form';
-import HeroImage from '../components/HeroImage';
-import Navbar from '../components/Navbar';
+import Footer from '../components/footer/Footer';
+import Form from '../components/form/Form';
+import HeroImage from '../components/hero/HeroImage';
+import Navbar from '../components/navbar/Navbar';
 
 const Contact = () => {
   return (

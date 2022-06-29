@@ -1,4 +1,4 @@
-import './styles/HeroImageStyles.css';
+import './heroImage.css';
 
 const HeroImage = ({ heading, text }) => {
   return (

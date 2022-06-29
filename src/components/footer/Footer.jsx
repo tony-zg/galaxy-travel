@@ -1,4 +1,4 @@
-import './styles/FooterStyles.css';
+import './footer.css';
 import {
   FaFacebook,
   FaLinkedin,

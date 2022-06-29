@@ -1,5 +1,5 @@
-import './styles/VideoStyles.css';
-import spaceVideo from '../assets/space.mp4';
+import './video.css';
+import spaceVideo from '../../assets/space.mp4';
 import { Link } from 'react-router-dom';
 
 const Video = () => {

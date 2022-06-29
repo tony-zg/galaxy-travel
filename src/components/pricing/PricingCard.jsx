@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './styles/PricingCardStyles.css';
+import './pricingCard.css';
 
 const PricingCart = () => {
   return (

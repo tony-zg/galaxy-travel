@@ -1,6 +1,6 @@
-import './styles/TrainingContentStyles.css';
-import Pod from '../assets/pod.jpg';
-import Moon from '../assets/moon.jpg';
+import './trainingContent.css';
+import Pod from '../../assets/pod.jpg';
+import Moon from '../../assets/moon.jpg';
 import { Link } from 'react-router-dom';
 
 const TrainingContent = () => {

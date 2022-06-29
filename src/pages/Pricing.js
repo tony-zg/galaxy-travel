@@ -1,7 +1,7 @@
-import Footer from '../components/Footer';
-import HeroImage from '../components/HeroImage';
-import Navbar from '../components/Navbar';
-import PricingCart from '../components/PricingCard';
+import Footer from '../components/footer/Footer';
+import HeroImage from '../components/hero/HeroImage';
+import Navbar from '../components/navbar/Navbar';
+import PricingCart from '../components/pricing/PricingCard';
 
 const Pricing = () => {
   return (
